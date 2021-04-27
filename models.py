@@ -8,5 +8,5 @@ class Article(db.Model):
     body = db.Column(db.Text, unique=False, nullable=True)
     photo = db.Column(db.Text, unique=False, nullable=True)
 
-    def __repr__(self):
-        return f"Article({self.id}, {self.title}, {self.body})"
+#def __repr__(self):
+#return f"Article({self.id}, {self.title}, {self.body})"

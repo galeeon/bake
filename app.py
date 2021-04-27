@@ -6,9 +6,6 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
-app.config['SECRET_KEY'] = 'AWWWWW'
-app.config['SIMPLEMDE_JS_IIFE'] = True
-app.config['SIMPLEMDE_USE_CDN'] = True
 db.app = app
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -21,12 +18,10 @@ def homepage():
                            title='Главная страница',
                            articles=articles)
 
-# Подробный просмотр статьи
 @app.route('/articles/<int:article_id>')
 def get_article(article_id):
     articles: Article = Article.query.filter_by(id=article_id).first()
     return render_template('article.html', title=articles.title, articles=articles)
-
 
 @app.route('/about')
 def about():
