@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <div class="container">
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1>BAKE</h1>
+                        <p class="lead text-muted">Рецептики</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+<!--        <div class="container mb-2">-->
+<!--            <h1>Коллекция</h1>-->
+<!--            <div class="row row-cols-1 row-cols-md-3 g-4">-->
+<!--                {% for article in articles %}-->
+<!--                    <div class="col">-->
+<!--                        <div class="card h-100">-->
+<!--                            <img src="../static/img/content.jpg" class="card-img-top" alt="...">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title">{{ article.title }}</h5>-->
+<!--                                <p class="card-text">{{ article.body }}</p>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer">-->
+
+<!--                                <button type="button" class="btn btn-outline-secondary"><a href="{{ url_for('get_article', article_id=loop.index) }}">Рецепт</a>-->
+<!--                                </button>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </div>-->
+
+ <div class="container my-2">
+        <h1>Коллекция</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for article in articles %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ article.photo }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ article.body }}</p>
+                        <a class="btn btn-outline-secondary" href="{{ url_for('get_article', article_id=loop.index) }}">Читать
+                            дальше</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{# {{ article.name }}, {{ article.time }} #}Автор, дата</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </main>
+{% endblock %}
